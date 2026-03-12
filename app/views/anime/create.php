@@ -1,4 +1,4 @@
-<?php require_once  "/../layout/header.php"; ?>
+<?php require_once __DIR__ . "/../layout/header.php"; ?>
 
 <main>
     <h1>Add Anime</h1>
@@ -45,4 +45,4 @@
     </form>
 </main>
 
-<?php require_once  "/../layout/footer.php"; ?>
+<?php require_once __DIR__ . "/../layout/footer.php"; ?>
