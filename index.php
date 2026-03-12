@@ -1,21 +1,45 @@
 <?php
 require_once "config/database.php";
+require_once "app/models/Anime.php";
+require_once "app/controllers/AnimeController.php";
 
-$database = new Database();
-$conn = $database->getConnection();
+$controller = new AnimeController();
 
+$action = isset($_GET['action']) ? $_GET['action'] : 'index';
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+
+switch($action) {
+
+    case 'index':
+        $controller->index();
+        break;
+
+    case 'show':
+        $controller->show($id);
+        break;
+
+    case 'create':
+        $controller->create();
+        break;
+
+    case 'store':
+        $controller->store($_POST);
+        break;
+
+    case 'edit':
+        $controller->edit($id);
+        break;
+
+    case 'update':
+        $controller->update($id, $_POST);
+        break;
+
+    case 'delete':
+        $controller->destroy($id);
+        break;
+
+    default:
+        $controller->index();
+        break;
+}
 ?>
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> Anime watchlist </title>
-    </head>
-    <body>
-        <?php if($conn): ?>
-            <h1> Database connection successful! </h1>
-        <?php else: ?>
-            <h1> Database connection failed! </h1>
-        <?php endif; ?>
-    </body>
-</html>

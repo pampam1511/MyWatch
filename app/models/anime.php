@@ -33,7 +33,7 @@ class Anime {
 
     public function create($data) {
         $sql = "INSERT INTO " . $this->table . "
-                (title, status, rating, current_episode, total_episodes, genre, date_added)
+                (title, status, rating, current_ep, total_ep, genre, date_add)
                 VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([
